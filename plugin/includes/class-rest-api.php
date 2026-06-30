@@ -72,5 +72,19 @@ class Rest_API {
                 ];
             }
         ]);
+
+        register_rest_route('tkg/v1', '/plan-day', [
+            'methods' => 'GET',
+            'callback' => function () {
+
+                if (class_exists('TKG\\Core\\Plan_Engine')) {
+                    return \TKG\Core\Plan_Engine::generate_plan();
+                }
+
+                return [
+                    'error' => 'Plan engine not available'
+                ];
+            }
+        ]);
     }
 }
