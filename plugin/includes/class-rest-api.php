@@ -44,12 +44,32 @@ class Rest_API {
 
                     $data[] = [
                         'title' => $post->post_title,
+                        'type' => $post->post_type,
                         'lat' => (float) $lat,
                         'lng' => (float) $lng
                     ];
                 }
 
                 return $data;
+            }
+        ]);
+
+        register_rest_route('tkg/v1', '/daily-guide', [
+            'methods' => 'GET',
+            'callback' => function () {
+
+                $weather = ['☀️ Solskin', '🌥️ Skyet', '🌧️ Regn'];
+                $activities = [
+                    'Gå til stranden i Thorup',
+                    'Udforsk klitterne',
+                    'Besøg lokal café',
+                    'Tag en kystvandring'
+                ];
+
+                return [
+                    'weather' => $weather[array_rand($weather)],
+                    'activity' => $activities[array_rand($activities)]
+                ];
             }
         ]);
     }
