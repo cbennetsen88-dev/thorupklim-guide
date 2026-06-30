@@ -17,6 +17,7 @@ class Plugin {
         new Rest_API();
         new Meta_Fields();
         new Map();
+        new Filters();
 
         // Admin only
         if (is_admin()) {
