@@ -18,6 +18,7 @@ class Plugin {
         new Meta_Fields();
         new Map();
         new Filters();
+        new UI_Panel();
 
         // Admin only
         if (is_admin()) {
