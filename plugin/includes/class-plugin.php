@@ -6,6 +6,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once __DIR__ . '/class-ai-guide.php';
+require_once __DIR__ . '/class-weather.php';
+require_once __DIR__ . '/class-recommendation-engine.php';
+
 class Plugin {
 
     public static function init() {
@@ -19,6 +23,11 @@ class Plugin {
         new Map();
         new Filters();
         new UI_Panel();
+
+        // Sprint 4: Intelligence layer
+        new AI_Guide();
+        new Weather();
+        new Recommendation_Engine();
 
         // Admin only
         if (is_admin()) {
