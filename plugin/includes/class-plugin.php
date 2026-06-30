@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 require_once __DIR__ . '/class-ai-guide.php';
 require_once __DIR__ . '/class-weather.php';
 require_once __DIR__ . '/class-recommendation-engine.php';
+require_once __DIR__ . '/class-guide-mode.php';
 
 class Plugin {
 
@@ -24,10 +25,11 @@ class Plugin {
         new Filters();
         new UI_Panel();
 
-        // Sprint 4: Intelligence layer
+        // Sprint 4 + 5 Intelligence layer
         new AI_Guide();
         new Weather();
         new Recommendation_Engine();
+        new Guide_Mode();
 
         // Admin only
         if (is_admin()) {
