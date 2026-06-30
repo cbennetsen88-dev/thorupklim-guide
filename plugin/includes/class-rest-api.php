@@ -23,5 +23,34 @@ class Rest_API {
                 ];
             }
         ]);
+
+        register_rest_route('tkg/v1', '/locations', [
+            'methods' => 'GET',
+            'callback' => function () {
+
+                $posts = get_posts([
+                    'post_type' => ['tkg_experience', 'tkg_accommodation'],
+                    'numberposts' => -1
+                ]);
+
+                $data = [];
+
+                foreach ($posts as $post) {
+
+                    $lat = get_post_meta($post->ID, '_tkg_lat', true);
+                    $lng = get_post_meta($post->ID, '_tkg_lng', true);
+
+                    if (!$lat || !$lng) continue;
+
+                    $data[] = [
+                        'title' => $post->post_title,
+                        'lat' => (float) $lat,
+                        'lng' => (float) $lng
+                    ];
+                }
+
+                return $data;
+            }
+        ]);
     }
 }
