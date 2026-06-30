@@ -10,6 +10,7 @@ require_once __DIR__ . '/class-ai-guide.php';
 require_once __DIR__ . '/class-weather.php';
 require_once __DIR__ . '/class-recommendation-engine.php';
 require_once __DIR__ . '/class-guide-mode.php';
+require_once __DIR__ . '/class-plan-engine.php';
 
 class Plugin {
 
@@ -30,6 +31,7 @@ class Plugin {
         new Weather();
         new Recommendation_Engine();
         new Guide_Mode();
+        new Plan_Engine();
 
         // Admin only
         if (is_admin()) {
